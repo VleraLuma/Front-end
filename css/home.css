@@ -173,10 +173,14 @@ header {
         
     }
 
+    header{
+        width: 100%;
+    }
+
 
     .container{
-        width: 250px;
-        height: auto;
+        width: 100%;
+        
     }
 
     #menu-btn {
