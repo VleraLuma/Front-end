@@ -12,7 +12,7 @@ html{
     font-size: 62.5%;
     overflow-x:hidden ;
 }
-header {
+.header {
     height: 50px;
     background-color: #fff;
     box-shadow: 0, .5rem 1rem rgba(0, 0, 0, .1);
@@ -199,7 +199,7 @@ header {
 
   .footer{
     
-    background: url(images/footer-background.png) no-repeat;
+    background: url(../images/footer-background.png) no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -253,50 +253,182 @@ header {
 
 @media (max-width: 768px) {
 
-    html{
-        font-size: 55%;
-        
+    .header .container .logo {
+        display: block; 
+        height: 50px;
+        margin-left: 350px; 
+        margin-bottom: 30px;
     }
-
-    header{
-        width: 100%;
-    }
-
-
-    .container{
-        width: 100%;
-        
+    .header .container {
+        margin-right: 20px;
+        margin-left: 20px;
     }
 
     #menu-btn {
-        display: inherit;
+        display: inline-block; 
+        margin-right: 0;
+        margin-left: 280px;
+    }
+
+    .header .navbar {
+        
         transition: .2s linear;
-    }
-
-    #menu-btn.fa-times {
-        transform: rotate(180deg);
-    }
-
-    .container .navbar {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
         position: absolute;
-        top: 99%;
+        top: 10%; left: 0; right: 0;
+        background-color: #fff;
+        border-top: 1rem solid #222;
+        padding: 1rem;
+        z-index: 1;
+    }
+    .header .navbar.active{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .header .navbar ul {
+        flex-direction: column;
+        align-items: center; 
+        gap: 10px;
+        display: block;
+        text-align: center;
+
+
+    }
+    .header .navbar a{
+        display: block;
+        margin: 2rem;
+        text-align: center;
+        background-color: #fff;
+        position: relative; 
+        z-index: 2; 
+        
+    }
+
+    .header .navbar li {
+        margin-right: 0; 
+        display: block;
+    }
+}
+/* ... (previous styles) ... */
+
+@media (max-width: 1024px) {
+    .header .container {
+        margin-right: 20px;
+        margin-left: 100px;
+    }
+
+    #menu-btn {
+        display: inline-block;
+        margin-right: 0;
+    }
+
+    .header .navbar {
+        transition: .2s linear;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        position: absolute;
+        top: 10%;
         left: 0;
         right: 0;
         background-color: #fff;
         border-top: 1rem solid #222;
-        padding: 2rem;
-        transition: .2s linear;
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        padding: 1rem;
+        z-index: 1;
     }
 
-    .container .navbar.active {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    .header .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 120%, 0 100%);
     }
 
-    .container .navbar a {
+    .header .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        display: block;
+        text-align: center;
+    }
+
+    .header .navbar a {
         display: block;
         margin: 2rem;
         text-align: center;
+        background-color: #fff;
+        position: relative;
+        z-index: 2;
+    }
+
+    .header .container .logo {
+        display: block;
+        height: 50px;
+        margin-left: -300px; 
+        margin-bottom: 30px;
+    }
+
+    .header .navbar li {
+        margin-right: 0;
+        display: block;
     }
 }
+
+
+@media (max-width: 375px) {
+    .header .container {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    #menu-btn {
+        font-size: 1.8rem; 
+        display: inline-block;
+        margin-right: 0;
+        color: black;
+    }
+
+    .header .navbar {
+        transition: .2s linear;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        position: absolute;
+        top: 10%;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        border-top: 1rem solid #222;
+        padding: 1rem;
+        z-index: 1;
+    }
+
+    .header .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 120%, 0 100%);
+    }
+
+    .header .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        display: block;
+        text-align: center;
+    }
+
+    .header .navbar a {
+        display: block;
+        margin: 1rem;
+        text-align: center;
+        background-color: #fff;
+        position: relative;
+        z-index: 2;
+    }
+
+    .header .container .logo {
+        display: block;
+        height: 40px;
+        margin-left: 0;
+    }
+
+    .header .navbar li {
+        margin-right: 0;
+        display: block;
+    }
+}
+
+
+
 
