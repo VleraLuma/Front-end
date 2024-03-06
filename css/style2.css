@@ -300,11 +300,3 @@ header {
     }
 }
 
-@media (max-width: 350px) {
-    
-
-    html {
-        
-        width: 350px;
-    }
-}
