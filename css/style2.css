@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    outline: none;border: none;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x:hidden ;
+}
+header {
+    height: 50px;
+    background-color: #fff;
+    box-shadow: 0, .5rem 1rem rgba(0, 0, 0, .1);
+
+    .logo {
+        height: 50px;
+        margin-left: -750px;
+    }
+
+    .container {
+        height: 100px;
+        margin-right: 200px;
+        margin-left: 550px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            list-style-type: none;
+            padding-top: 20px;
+
+            a{
+                text-decoration: none;
+                color: rgb(5, 5, 140);
+                transition: .1s 0s all linear;
+                text-transform: uppercase;
+                margin-right: 20px;
+            }
+            a:hover{
+                padding: 10px 20px;
+                color: white;
+                background-color: rgb(65, 156, 231);
+            }
+        }
+    }
+}
+
+#menu-btn{
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--black);
+    display: none;
+}
+
+.dropbtn {
+    background-color: #80d2ef;
+    text-transform: uppercase;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    color: rgb(5, 5, 140);
+  }
+  
+.dropdown {
+    margin-top:-10px;
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    background-color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+.dropdown:hover .dropbtn {
+    background-color: rgb(65, 156, 231);
+}
+
+.jobs-list-container {
+    max-width: 1100px;
+    margin: 20px auto;
+    font-family: "Rubik", sans-serif;
+  }
+  
+  .jobs-list-container h2 {
+    font-size: 30px;
+    border-left: 4px solid #023047;
+    padding-left: 20px;
+  }
+  
+  .jobs-list-container .jobs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  
+  .jobs-list-container .jobs img {
+    width: 60px;
+  }
+  
+  .jobs-list-container .job {
+    box-shadow: 0 4px 24px -8px rgba(2, 48, 71, 0.2);
+    padding: 24px;
+    border-radius: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all 400ms ease;
+  }
+  
+  .jobs-list-container .job:hover {
+    transform: scale(1.03);
+  }
+  
+  .jobs-list-container .open-positions {
+    position: absolute;
+    top: 40px;
+    right: 24px;
+    color: #e63946;
+  }
+  
+  .jobs-list-container .job-title {
+    font-size: 20px;
+    padding: 10px 0;
+    margin: 0;
+    color: #023047;
+  }
+  
+  .jobs-list-container .details {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.8;
+    flex: 1;
+  }
+  
+  .jobs-list-container .details-btn {
+    text-decoration: none;
+    border: 1px solid #023047;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+    transition: all 400ms ease;
+  }
+  
+  .jobs-list-container .details-btn:hover {
+    background: #023047;
+    color: #fff;
+  }
+  
+  .jobs-list-container .job-search {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-family: "Rubik", sans-serif;
+    box-sizing: border-box;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 940px) {
+    .jobs-list-container .jobs {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .jobs-list-container .jobs {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
