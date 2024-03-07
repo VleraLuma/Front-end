@@ -117,3 +117,97 @@ const jobs = [
   
     createJobListingCards();
   });
+
+ // Users
+
+  const users = [
+    {
+      title: "Emri Mbiemri",
+      image: "images/admin.png",
+      details:
+        "john@example.com",
+      link: "#",
+    },
+
+    {
+        title: "Emri Mbiemri",
+        image: "images/admin2.png",
+        details:
+          "john@example.com",
+        link: "#",
+      },
+
+      {
+        title: "Emri Mbiemri",
+        image: "images/admin.png",
+        details:
+          "john@example.com",
+        link: "#",
+      },
+
+      {
+        title: "Emri Mbiemri",
+        image: "images/admin2.png",
+        details:
+          "john@example.com",
+        link: "#",
+      },
+
+      {
+        title: "Emri Mbiemri",
+        image: "images/admin.png",
+        details:
+          "john@example.com",
+        link: "#",
+      },
+
+      {
+        title: "Emri Mbiemri",
+        image: "images/admin2.png",
+        details:
+          "john@example.com",
+        link: "#",
+      },
+    ];
+
+    const usersHeading = document.querySelector(".users-list-container h2");
+  const usersContainer = document.querySelector(".users-list-container .users");
+  const userSearch = document.querySelector(".users-list-container .user-search");
+
+
+  const createUserListingCards = () => {
+    usersContainer.innerHTML = "";
+
+    users.forEach((user) => {
+        if (user.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+          let userCard = document.createElement("div");
+          userCard.classList.add("user");
+
+          let image = document.createElement("img");
+          image.src = user.image;
+
+          let title = document.createElement("h3");
+            title.innerHTML = user.title;
+            title.classList.add("user-title");
+
+            let details = document.createElement("div");
+            details.innerHTML = user.details;
+            details.classList.add("details");
+        
+
+              userCard.appendChild(image);
+                userCard.appendChild(title);
+                userCard.appendChild(details);
+  
+                usersContainer.appendChild(userCard);
+      }
+    });
+  };
+
+  createUserListingCards();
+  
+  userSearch.addEventListener("input", (e) => {
+    searchTerm = e.target.value;
+  
+    createUserListingCards();
+  });
