@@ -197,6 +197,74 @@ html{
     }
   }
 
+  /* users */
+
+  .users-list-container{
+    max-width: 1100px;
+    margin: 20px auto;
+    font-family: "Rubik", sans-serif;
+}
+
+.users-list-container h2{
+    font-size: 30px;
+    border-left: 4px solid #023047;
+    padding-left: 20px;
+}
+
+.users-list-container .users{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+}
+
+.users-list-container .users img{
+    width: 60px;
+}
+
+.users-list-container .user{
+    box-shadow: 0 4px 24px -8px rgba(2, 48, 71, 0.2);
+    padding: 24px;
+    border-radius: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all 400ms ease;
+}
+
+.users-list-container .user:hover{
+    transform: scale(1.03);
+}
+
+.users-list-container .user-title{
+    font-size: 20px;
+    padding: 10px 0;
+    margin: 0;
+    color: #023047;
+}
+
+.users-list-container .details{
+    margin-top: 6px;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.8;
+    flex: 1;
+}
+
+
+@media (max-width: 940px) {
+    .users-list-container .users {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .users-list-container .users {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+
   .footer{
     
     background: url(../images/footer-background.png) no-repeat;
@@ -428,7 +496,6 @@ html{
         display: block;
     }
 }
-
 
 
 
