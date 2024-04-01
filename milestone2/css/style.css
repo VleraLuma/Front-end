@@ -1,0 +1,49 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+header{
+    display: flex;
+    nav{
+        background-color: #204167;
+        .menu {
+            display: block;
+            width: 250px;
+
+        }
+    
+        .menu a {
+            display: block;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+
+            &:hover{
+                font-size: 20px;
+                text-decoration: underline;
+            }
+        }
+    
+        .submenu {
+            margin-top: 0;
+            width: 250px;
+            display: none;
+            background-color: #2a5688;
+            font-size: 14px;
+            transition: all 0.3s;
+           
+        }
+    
+        .submenu a {
+            padding: 10px 40px;
+            
+            &:hover{
+                background-color: #2d5d93;
+                font-size: 16px ;
+            }
+        }
+      
+    }
+}
