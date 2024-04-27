@@ -1,0 +1,604 @@
+<!-- {% extends 'authentication/base.html' %}
+{% load static %} -->
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="update_info.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+<!-- {% block title %} Homepage {% endblock %}
+{% block navbar %}
+
+{% endblock %}
+
+{% block content %}     -->
+<div class="container">
+        <!-- Left Column -->
+        <div class="">
+            <div class="">
+                <form method="post" action="{% url 'update_data' %}">
+                    <!-- {% csrf_token %}
+                    {% if user.email %}
+
+                    {% endif %} -->
+                <!-- template.html -->
+                <!-- {% if messages %} -->
+                    <!-- <ul class="messages">
+                        {% for message in messages %}
+                        {% if message.tags == "error" %}
+                            <li class="alert alert-danger" >{{ message }}</li>
+                            {% else %}
+                            <li class="alert alert-success" >{{ message }}</li>
+                        {% endif %}    
+                        {% endfor %}
+                    </ul>
+                {% endif %} -->
+
+                    <div class="row">
+                        <div style="width: 90%; margin-left: 0;" class="card-header rounded text-white mx-5 py-2">
+                            <h5 class="mb-0   text-center title">
+                                <i class="lni lni-user   "></i>
+                                Personal Information</h5>
+                        </div>
+
+                    <div>
+                        <h1></h1>
+                    <hr>
+                    </div>
+                    <div class="col-md-5 mx-5">
+                        <div class="form-group">
+                            <label for="prefix" class="form-label">Prefix:</label>
+                            <select class="form-select" id="prefix" name="prefix">
+                                <option value="{{user_info.prefix}}" selected>{{user_info.prefix}}</option>
+                                <option value="Option 1">Option 1</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                            </select>
+                            <span style="color: red;" id="prefix_error"></span>
+                        </div>
+                        
+                    </div>
+                        
+   
+                        <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="sufix">Sufix:</label>
+                                <select class="form-select" id="sufix" name="sufix">
+                                    <option value="{{user_info.suffix}}" selected>{{user_info.suffix}}</option>
+                                    <option value="Option 1">Option 1</option>
+                                    <option value="Option 2">Option 2</option>
+                                    <option value="Option 3">Option 3</option>
+                                </select>
+                                <span style="color: red;" id="sufix_error"></span>
+                            </div>
+
+                            
+                        </div>
+                        
+                        <!-- {% if user_info.socialsecuritynumber == "" %} -->
+                        <div class="col-md-5 mx-5">
+                        <div class="form-group">
+                            <span id="ssn-min" style="color: red; display: none;">The minimum length is 9 numbers.</span>
+                            <span id="ssn-max" style="color: red; display: none;">The maximum length is 9 numbers.</span>
+                            <span id="success-ssn" style="color: green; display: none;">Success,The number is valid.</span>
+                            <label for="input3">Social Security Number:</label>
+                            <input type="text"  minlength="9" maxlength="9"   class="form-control  " id="socialsecuritynumber" name="socialsecuritynumber" placeholder="{{user_info.socialsecuritynumber}}">
+                            <span style="color: red;" id="socialsecuritynumber_error"></span>
+                        </div>
+                        
+                        </div>
+                       
+                        
+                        
+                        
+                        <div class="col-md-5 mx-5">
+                        <div class="form-group">
+                            <label for="preferredphonetype">Preferred phone type:</label><br>
+                            <select class="form-select" id="preferredphonetype" name="preferredphonetype">
+                                <option value="{{user_info.preferredphonetype}}" selected>{{user_info.preferredphonetype}}</option>
+                                <option value="Option 1">Option 1</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                </select>
+                                <span style="color: red;" id="preferredphonetype_error"></span>
+                            </div>
+                            </div>
+                            
+                            <!-- {% if user_info.phone == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <span id="n-min" style="color: red; display: none;">The minimum length is 10 numbers.</span>
+                                <span id="n-max" style="color: red; display: none;">The maximum length is 10 numbers.</span>
+                                <span id="success-n" style="color: green; display: none;">Success,The number is valid.</span>
+                                <label for="phone">Number:</label>
+                                <input type="text" minlength="10" maxlength="10" class="form-control  " id="phone" name="phone"  placeholder="{{user_info.phone}}" >
+                                <span style="color: red;" id="phone_error"></span>
+                            </div>
+                            </div>
+                           
+                            
+                            <!-- {% if user_info.otherphone == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Other Phone:</label>
+                                <input type="text" class="form-control" id="otherphone  " name="otherphone"  placeholder="{{user_info.otherphone}}">
+                                <span style="color: red;" id="otherphone_error"></span>
+                            </div>
+                            </div>
+                           
+
+                            <!-- {% if user_info.address == "" %}  -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Address:</label>
+                                <input type="text" class="form-control  " id="address" name="address" placeholder="{{user_info.address}}">
+                                <span style="color: red;" id="address_error"></span>
+                            </div>
+                            </div>
+                            
+
+                            <!-- {% if user_info.city == "" %}-->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">City:</label>
+                                <input type="text" class="form-control "id="city" name="city" placeholder="{{user_info.city}}">
+                                <span style="color: red;" id="city_error"></span>
+                            </div>
+                            </div>
+                           
+
+                            <!-- update_info.html -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="stateprovince">State/Province:</label>
+                                <select class="form-select" id="stateprovince" name="stateprovince">
+                                    {% for value, label in COUNTRY_CHOICES %}
+                                    <option value="{{user_info.stateprovince}}" selected>{{user_info.stateprovince}}</option>
+                                    {% for v in label %}
+                                    <option value="{{ v.1 }}">
+                                        {{ v.1 }}
+                                    </option>
+                                    <!-- {% endfor %}
+                                    {% endfor %} -->
+                                </select>
+                                <span style="color: red;" id="stateprovince_error"></span>
+                            </div>
+                            </div>
+                            
+                            <!-- {% if user_info.zipcode == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <span id="zip-min" style="color: red; display: none;">The minimum length is 5 numbers.</span>
+                                <span id="zip-max" style="color: red; display: none;">The maximum length is 5 numbers.</span>
+                                <span id="success-zip" style="color: green; display: none;">Success,The number is valid.</span>
+                                <label for="phone">Zip code:</label>
+                                <input type="text" minlength="5" maxlength="5" class="form-control  " id="zipcode" name="zipcode"  placeholder="{{user_info.zipcode}}">
+                                <span style="color: red;" id="zipcode_error"></span>
+                            </div>
+                            </div>
+                            
+                            
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="stateprovince">Country:</label>
+                                <select class="form-select" id="country" name="country">
+                                    {% for value, label in COUNTRY_CHOICES %}
+                                    <option value="{{user_info.country}}" selected>{{user_info.country}}</option>
+                                    {% for v in label %}
+                                    <option value="{{ v.1 }}">
+                                        {{ v.1 }}
+                                    </option>
+                                    <!-- {% endfor %}
+                                    {% endfor %} -->
+                                </select>
+                                <span style="color: red;" id="country_error"></span>
+                            </div>
+                            </div>
+                            <!-- {% if user_info.mailaddress == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone-horizontal">Mail Address:</label>
+                                <input type="text" class="form-control  " id="mailaddress" name="mailaddress" placeholder="{{user_info.mailaddress}}">
+                                <span style="color: red;" id="mailaddress_error"></span>
+                            </div>
+                            </div>
+                           
+                            
+                            <!-- {% if user_info.mailcity == "" %}  -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Mail City:</label>
+                                <input type="text" class="form-control     " id="mailcity" name="mailcity"  placeholder="{{user_info.mailcity}}">
+                                <span style="color: red;" id="mailcity_error"></span>
+                            </div>
+                            </div>
+                             
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="stateprovince">Mailing state province:</label><br>
+                                <select class="form-select" id="mailingstateprovince" name="mailingstateprovince">
+                                    {% for value, label in COUNTRY_CHOICES %}
+                                    <option value="{{user_info.mailingstateprovince}}" selected>{{user_info.mailingstateprovince}}</option>
+                                    {% for v in label %}
+                                    <option value="{{ v.1 }}">
+                                        {{ v.1 }}
+                                    </option>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </select>
+                                <span style="color: red;" id="mailingstateprovince_error"></span>
+                            </div>
+                            </div>
+                            
+                            <!-- {% if user_info.mailingzipcode == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Mailing Zip Code:</label>
+                                <input type="text" class="form-control    " id="mailingzipcode" name="mailingzipcode" placeholder="{{user_info.mailingzipcode}}">
+                                <span style="color: red;" id="mailingzipcode_error"></span>
+                            </div>
+                            </div>
+                           
+                            
+                            <!-- {% if user_info.mailingcountry == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Mailing Country:</label>
+                                <input type="text" class="form-control  " id="mailingcountry" name="mailingcountry"  placeholder="{{user_info.mailingcountry}}">
+                                <span style="color: red;" id="mailingcountry_error"></span>
+                            </div>
+                            </div>
+                            
+                            
+                            <!-- {% if user_info.birthcity == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Birth City:</label>
+                                <input type="text" class="form-control  " id="birthcity" name="birthcity"  placeholder="{{user_info.birthcity}}">
+                                <span style="color: red;" id="birthcity_error"></span>
+                            </div>
+                            </div>
+                           
+
+                            <!-- {% if user_info.birthcountry == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Birth Country:</label>
+                                <input type="text" class="form-control  " id="birthcountry" name="birthcountry"  placeholder="{{user_info.birthcountry}}">
+                                <span style="color: red;" id="birthcountry_error"></span>
+                            </div>
+                            </div>
+                           
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="stateprovince">Birth/State Province:</label>
+                                <select class="form-select" id="birthstateprovince" name="birthstateprovince">
+                                    {% for value, label in COUNTRY_CHOICES %}
+                                    <option value="{{user_info.birthstateprovince}}" selected>{{user_info.birthstateprovince}}</option>
+                                    {% for v in label %}
+                                    <option value="{{ v.1 }}">
+                                        {{ v.1 }}
+                                    </option>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </select>
+                                <span style="color: red;" id="birthstateprovince_error"></span>
+                            </div> 
+                            </div> 
+                            
+                            <!-- {% if user_info.languagesspokenotherthanenglish == "" %} -->
+                                <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Languages Spoken Other Than English:</label>
+                                <input type="text" class="form-control  " id="languagesspokenotherthanenglish" name="languagesspokenotherthanenglish"  placeholder="{{user_info.languagesspokenotherthanenglish}}">
+                                <span style="color: red;" id="languagesspokenotherthanenglish_error"></span>
+                            </div>
+                            </div>
+                            
+                            
+                            <!-- {% if user_info.emergencycontactname == "" %} -->
+                                <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Emergency Contact Name:</label>
+                                <input type="text" class="form-control  " id="emergencycontactname" name="emergencycontactname" placeholder="{{user_info.emergencycontactname}}">
+                                <span style="color: red;" id="emergencycontactname_error"></span>
+                            </div>
+                            </div>
+                           
+
+                            <!-- {% if user_info.emergencycontactnumber == "" %} -->
+                                <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Emergency Contact Number:</label>
+                                <input type="text" class="form-control  " id="emergencycontactnumber" name="emergencycontactnumber" placeholder="{{user_info.emergencycontactnumber}}">
+                                <span style="color: red;" id="emergencycontactnumber_error"></span>
+                            </div>
+                            </div>
+                            
+
+                            <!-- {% if user_info.emergencycontactemail == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Emergency Contact Email:</label>
+                                <input type="text" class="form-control  " id="emergencycontactemail" name="emergencycontactemail"  placeholder="{{user_info.emergencycontactemail}}">
+                                <span style="color: red;" id="emergencycontactemail_error"></span>
+                            </div>
+                            </div>
+                            
+                            <!-- {% if user_info.primaryspeciality == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">Primary Speciality:</label>
+                                <input type="text" class="form-control  " id="primaryspeciality" name="primaryspeciality"  placeholder="{{user_info.primaryspeciality}}">
+                                <span style="color: red;" id="primaryspeciality_error"></span>
+                            </div>
+                            </div>
+                           
+
+                            <!-- {% if user_info.generalsurgery == "" %} -->
+                            <div class="col-md-5 mx-5">
+                            <div class="form-group">
+                                <label for="phone">General Surgery:</label>
+                                <input type="text" class="form-control  " id="generalsurgery" name="generalsurgery"  placeholder="{{user_info.generalsurgery}}">
+                                <span style="color: red;" id="generalsurgery_error"></span>
+                            </div>
+                            </div>
+                            
+                            <!-- {% if user_info.secondaryspeciality == "" %} -->
+                            <div class="col-md-5 mx-5">
+                                <div class="form-group">
+                                    <label for="secondaryspeciality">Secondary Speciality:</label>
+                                    <input type="text" class="form-control  " id="secondaryspeciality" name="secondaryspeciality"  placeholder="{{ user_info.secondaryspeciality }}">
+                                    <span style="color: red;" id="secondaryspeciality_error"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-5 mx-5">
+                                <div class="form-group-horizontal">
+                                    <label for="abletoworkintheusa">Able to Work in the USA:</label>
+                                    <input type="checkbox" style="width: 1.5rem; height: 1.5rem; margin-left: 2rem; margin-top: 1.5rem;" id="abletoworkintheusa" name="abletoworkintheusa" {% if user_info.abletoworkintheusa %}checked{% endif %} value="True">
+                                    <span style="color: red;" id="abletoworkintheusa_error"></span>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                            
+                            
+                            <button type="submit" class="btn btn-primary mt-4">Submit Form</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+<br><br><br>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+
+    const prefix = document.getElementById('prefix');
+    const sufix = document.getElementById('sufix');
+    const socialsecuritynumber = document.getElementById('socialsecuritynumber');
+    const preferredphonetype = document.getElementById('preferredphonetype');
+    const phone = document.getElementById('phone');
+    const otherphone = document.getElementById('otherphone');
+    const address = document.getElementById('address');
+    const city = document.getElementById('city');
+    const stateprovince = document.getElementById('stateprovince');
+    const zipcode = document.getElementById('zipcode');
+    const country = document.getElementById('country');
+    const mailaddress = document.getElementById('mailaddress');
+    const mailcity = document.getElementById('mailcity');
+    const mailingstateprovince = document.getElementById('mailingstateprovince');
+    const mailingzipcode = document.querySelector('mailingzipcode');
+    const mailingcountry = document.querySelector('mailingcountry');
+    const birthcity = document.querySelector('birthcity');
+    const birthcountry = document.querySelector('birthcountry');
+    const birthstateprovince = document.querySelector('birthstateprovince');
+    const languagesspokenotherthanenglish = document.querySelector('languagesspokenotherthanenglish');
+    const emergencycontactname = document.querySelector('emergencycontactname');
+    const emergencycontactnumber = document.querySelector('emergencycontactnumber');
+    const emergencycontactemail = document.querySelector('emergencycontactemail');
+    const primaryspeciality = document.querySelector('primaryspeciality');
+    const generalsurgery = document.querySelector('generalsurgery');
+    const secondaryspeciality = document.querySelector('secondaryspeciality');
+    const abletoworkintheusa = document.querySelector('abletoworkintheusa');
+
+    const prefix_error = document.getElementById('prefix_error');
+
+    const sufix_error = document.getElementById('sufix_error');
+    const socialsecuritynumber_error = document.getElementById('socialsecuritynumber_error');
+    const preferredphonetype_error = document.getElementById('preferredphonetype_error');
+    const phone_error = document.getElementById('phone_error');
+    const otherphone_error = document.getElementById('otherphone_error');
+    const address_error = document.getElementById('address_error');
+    const city_error = document.getElementById('city_error');
+    const stateprovince_error = document.getElementById('stateprovince_error');
+    const zipcode_error = document.getElementById('zipcode_error');
+    const country_error = document.getElementById('country_error');
+    const mailaddress_error = document.getElementById('mailaddress_error');
+    const mailcity_error = document.getElementById('mailcity_error');
+    const mailingstateprovince_error = document.getElementById('mailingstateprovince_error');
+    const mailingzipcode_error = document.querySelector('mailingzipcode_error');
+    const mailingcountry_error = document.querySelector('mailingcountry_error');
+    const birthcity_error = document.querySelector('birthcity_error');
+    const birthcountry_error = document.querySelector('birthcountry_error');
+    const birthstateprovince_error = document.querySelector('birthstateprovince_error');
+    const languagesspokenotherthanenglish_error = document.querySelector('languagesspokenotherthanenglish_error');
+    const emergencycontactname_error = document.querySelector('emergencycontactname_error');
+    const emergencycontactnumber_error = document.querySelector('emergencycontactnumber_error');
+    const emergencycontactemail_error = document.querySelector('emergencycontactemail_error');
+    const primaryspeciality_error = document.querySelector('primaryspeciality_error');
+    const generalsurgery_error = document.querySelector('generalsurgery_error');
+    const secondaryspeciality_error = document.querySelector('secondaryspeciality_error');
+    const abletoworkintheusa_error = document.querySelector('abletoworkintheusa_error');
+
+
+    form.addEventListener('submit', (e) => {
+    // Reset all error messages
+    clearErrors();
+
+    // Validate each field
+    validateField(prefix, prefix_error, "Prefix is required");
+    validateField(sufix, sufix_error, "Sufix is required");
+    validateField(socialsecuritynumber, socialsecuritynumber_error, "Social Security Number is required");
+    validateField(preferredphonetype, preferredphonetype_error, "Preferred Phone Type is required");
+    validateField(phone, phone_error, "Phone is required");
+    validateField(zipcode, zipcode_error, "Zip code must be 5 characters");
+    validateField(countrycode, countrycode_error, "Country Code is required");
+    validateField(mailaddress, mailaddress_error, "Mail Address is required");
+    validateField(mailcity, mailcity_error, "Mail City is required");
+    validateField(mailingstateprovince, mailingstateprovince_error, "Mailing State/Province is required");
+    validateField(mailingcountry, mailingcountry_error, "Mailing Country is required");
+    validateField(birthcity, birthcity_error, "Birth City is required");
+    validateField(birthcountry, birthcountry_error, "Birth Country is required");
+    validateField(birthstateprovince, birthstateprovince_error, "Birth State/Province is required");
+    validateField(languagesspokenotherthanenglish, languagesspokenotherthanenglish_error, "Languages Spoken Other Than English is required");
+    validateField(emergencycontactname, emergencycontactname_error, "Emergency Contact Name is required");
+    validateField(emergencycontactnumber, emergencycontactnumber_error, "Emergency Contact Number is required");
+    validateField(emergencycontactemail, emergencycontactemail_error, "Emergency Contact Email is required");
+    validateField(primaryspeciality, primaryspeciality_error, "Primary Speciality is required");
+    validateField(generalsurgery, generalsurgery_error, "General Surgery is required");
+    validateField(secondaryspeciality, secondaryspeciality_error, "Secondary Speciality is required");
+    validateField(abletoworkintheusa, abletoworkintheusa_error, "Able to Work in the USA is required");
+
+    // Prevent form submission if there are errors
+    if (hasErrors()) {
+        e.preventDefault();
+    }
+});
+
+function validateField(field, errorElement, errorMessage) {
+    if (field.value.trim() === '') {
+        errorElement.innerHTML = errorMessage;
+    }
+}
+
+function clearErrors() {
+    const errorElements = document.querySelectorAll('.error');
+    errorElements.forEach((element) => {
+        element.innerHTML = '';
+    });
+}
+
+function hasErrors() {
+    const errorElements = document.querySelectorAll('.error');
+    for (let i = 0; i < errorElements.length; i++) {
+        if (errorElements[i].innerHTML.trim() !== '') {
+            return true;
+        }
+    }
+    return false;
+}
+
+</script>
+<script>
+    document.getElementById('phone').addEventListener('input', function() {
+        var phoneInput = document.getElementById('phone');
+        var phoneMax = document.getElementById('phone-max');
+        var phoneMin = document.getElementById('phone-min');
+        var successMessage = document.getElementById('success-message');
+        if (phoneInput.value.length > 10) {
+            phoneMax.style.display = 'block';
+            phoneMin.style.display = 'none'; // Hide the minimum length alert if exceeded
+        } else if (phoneInput.value.length < 10) {
+            phoneMin.style.display = 'block';
+            phoneMax.style.display = 'none'; // Hide the maximum length alert if not exceeded
+        } else {
+            phoneMin.style.display = 'none'; // Hide both alerts if the length is exactly 10
+            phoneMax.style.display = 'none';
+            successMessage.style.display = 'block'; // Show success message
+            setTimeout(function() {
+                successMessage.style.display = 'none'; // Hide success message after 2 seconds
+            }, 2000);
+        }
+
+    }
+    );
+    
+</script>
+
+<script>
+    document.getElementById('zipcode').addEventListener('input', function() {
+        var phoneInput = document.getElementById('zipcode');
+        var phoneMax = document.getElementById('zip-min');
+        var phoneMin = document.getElementById('zip-max');
+        var successMessage = document.getElementById('success-zip');
+        if (phoneInput.value.length > 5) {
+            phoneMax.style.display = 'block';
+            phoneMin.style.display = 'none'; // Hide the minimum length alert if exceeded
+        } else if (phoneInput.value.length < 5) {
+            phoneMin.style.display = 'block';
+            phoneMax.style.display = 'none'; // Hide the maximum length alert if not exceeded
+        } else {
+            phoneMin.style.display = 'none'; // Hide both alerts if the length is exactly 10
+            phoneMax.style.display = 'none';
+            successMessage.style.display = 'block'; // Show success message
+            setTimeout(function() {
+                successMessage.style.display = 'none'; // Hide success message after 2 seconds
+            }, 2000);
+        }
+
+    }
+    );
+
+</script>
+
+
+<script>
+    document.getElementById('socialsecuritynumber').addEventListener('input', function() {
+        var phoneInput = document.getElementById('socialsecuritynumber');
+        var phoneMax = document.getElementById('ssn-min');
+        var phoneMin = document.getElementById('ssn-max');
+        var successMessage = document.getElementById('success-ssn');
+        if (phoneInput.value.length > 9) {
+            phoneMax.style.display = 'block';
+            phoneMin.style.display = 'none'; // Hide the minimum length alert if exceeded
+        } else if (phoneInput.value.length < 9) {
+            phoneMin.style.display = 'block';
+            phoneMax.style.display = 'none'; // Hide the maximum length alert if not exceeded
+        } else {
+            phoneMin.style.display = 'none'; // Hide both alerts if the length is exactly 10
+            phoneMax.style.display = 'none';
+            successMessage.style.display = 'block'; // Show success message
+            setTimeout(function() {
+                successMessage.style.display = 'none'; // Hide success message after 2 seconds
+            }, 2000);
+        }
+
+    }
+    );
+
+</script>
+
+<script>
+    document.getElementById('phone').addEventListener('input', function() {
+        var phoneInput = document.getElementById('phone');
+        var phoneMax = document.getElementById('n-min');
+        var phoneMin = document.getElementById('n-max');
+        var successMessage = document.getElementById('success-n');
+        if (phoneInput.value.length > 10) {
+            phoneMax.style.display = 'block';
+            phoneMin.style.display = 'none'; // Hide the minimum length alert if exceeded
+        } else if (phoneInput.value.length < 10) {
+            phoneMin.style.display = 'block';
+            phoneMax.style.display = 'none'; // Hide the maximum length alert if not exceeded
+        } else {
+            phoneMin.style.display = 'none'; // Hide both alerts if the length is exactly 10
+            phoneMax.style.display = 'none';
+            successMessage.style.display = 'block'; // Show success message
+            setTimeout(function() {
+                successMessage.style.display = 'none'; // Hide success message after 2 seconds
+            }, 2000);
+        }
+
+    }
+    );
+
+</script>
+
+
+<!-- {% endblock %} -->
+
+
+
+
